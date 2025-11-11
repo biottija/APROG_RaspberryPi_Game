@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Semester 3\APROG\APROG_25HS\GpioHat\GpioHat.csproj" />
+  </ItemGroup>
+
 </Project>
