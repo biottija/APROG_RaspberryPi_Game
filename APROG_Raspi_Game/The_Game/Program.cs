@@ -13,6 +13,21 @@ namespace The_Game
             Console.WriteLine(AsciiArt.logo);
             Console.WriteLine(AsciiArt.mario);
             Console.WriteLine(AsciiArt.marioF);
+
+            Console.WriteLine("Welcome to The GAME!!!");
+            Console.WriteLine("Press Enter when you see \"Click\" Appear");
+
+            ReactionTester tester = new ReactionTester();
+            if (tester.run())
+            {
+                Console.WriteLine($"\n--- Results ---");
+                Console.WriteLine($"Time taken to press ENTER: {tester.PlayerOne.Points} ms");
+                
+                // PlayerOne.Points can be written to the file here.
+                // ...
+
+            }
+
         }
     }
 }
