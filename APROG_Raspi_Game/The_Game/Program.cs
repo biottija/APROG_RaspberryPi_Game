@@ -1,6 +1,8 @@
 ﻿using System.Text;
 
-namespace The_Game
+namespace The_Game {
+    internal class Program {
+        namespace The_Game
 {
     internal class Program
     {
