@@ -55,7 +55,7 @@ namespace The_Game {
                             } else if (consoleKey == ConsoleKey.Q) {
                                 Console.Clear();
                                 Console.WriteLine(AsciiArt.marioF);
-                                Thread.Sleep(500);
+                                Thread.Sleep(200);
                                 Menu.Print(src);
                                 return;
                             }
@@ -64,7 +64,7 @@ namespace The_Game {
                     case ConsoleKey.Q:
                         Console.Clear();
                         Console.WriteLine(AsciiArt.marioF);
-                        Thread.Sleep(500);
+                        Thread.Sleep(200);
                         Menu.Print(src);
                         return;
                     default:

@@ -70,11 +70,12 @@ namespace The_Game {
                 players.RemoveRange(10, players.Count - 10);
             }
             //print
-            Center(new string('*', 40));
+            /*Center(new string('*', 40));
             Center('*' + new string(' ', 38) + '*');
             Center('*' + new string(' ', 14) + "Highscores" + new string(' ', 14) + '*');
             Center('*' + new string(' ', 38) + '*');
-            Center(new string('*', 40));
+            Center(new string('*', 40));*/
+            Console.WriteLine(AsciiArt.highscores);
 
             int rank = 1;
             foreach (Player p in players) {
