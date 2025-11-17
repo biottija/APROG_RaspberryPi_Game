@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace The_Game {
     internal class Menu {
-        public static void Print() { 
+        public static void Print(string scores) {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(AsciiArt.logo);
             line();
             Center("Welcome to the Game");
+            line();
+            Scoreboard(scores);
             line();
             Center("APROG Project by:");
             Center("Jannis Biotti and Luca Heger");
@@ -25,7 +27,24 @@ namespace The_Game {
             keyLegend += "~";
             Center(keyLegend);
             line();
-            
+
+
+        }
+        public static void PrintHelp() {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(AsciiArt.help);
+            line();
+            Console.WriteLine();
+            Center("Press Enter when you see \"Click\" Appear");
+            Console.WriteLine();
+            line();
+            string keyLegend = "";
+            keyLegend += "~ Press 'esc' to get Back ";
+            keyLegend += "~ Press 'q' to quit the Game ";
+            keyLegend += "~";
+            Center(keyLegend);
+            line();
 
         }
         //this writes a line as wide as the logo with '~'
@@ -37,11 +56,43 @@ namespace The_Game {
         private static void Center(string s) {
             s = s.Trim();
             int n = 54 - (s.Length / 2);
-            Console.Write(new string(' ',n));
+            Console.Write(new string(' ', n));
             Console.Write(s + "\n");
         }
+        //print the scoreboard
+        private static void Scoreboard(string scores) {
+            var players = new List<Player>();
+            players = PlayerHandler.LoadPlayer(scores); //load the scorelist
+            players = players.OrderByDescending(p => p.Points).ToList(); //sort the list
+            players.Reverse(); //make the person with the lowes time #1
+            //remove if more than 10 players in list
+            if (players.Count > 10) {
+                players.RemoveRange(10, players.Count - 10);
+            }
+            //print
+            Center(new string('*', 40));
+            Center('*' + new string(' ', 38) + '*');
+            Center('*' + new string(' ', 14) + "Highscores" + new string(' ', 14) + '*');
+            Center('*' + new string(' ', 38) + '*');
+            Center(new string('*', 40));
 
-        
+            int rank = 1;
+            foreach (Player p in players) {
+                ScrbrdPlayer(rank++, p);
+            }
+            Center('*' + new string(' ', 28) + '*' + new string(' ', 9) + '*');
+            Center(new string('*', 40));
+        }
+        //print one player in the scoreboard
+        private static void ScrbrdPlayer(int rank, Player p) {
+            string line = "*  " + rank + ".  " + p.Name;
+            line += new string(' ', (29 - line.Length)) + '*';
+            line += "  ";
+            line += p.Points.ToString("D5");
+            line += "  *";
+            Center(line);
+
+        }
 
     }
 }

@@ -3,24 +3,27 @@
 namespace The_Game {
     internal class Program {
         static void Main(string[] args) {
+            // TODO: filePath should be defined
+            string src = "Scores.txt";
+
 
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.UTF8;
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            //Console.WriteLine(AsciiArt.logo);
-            //Console.WriteLine(AsciiArt.mario);
-            //Console.WriteLine(AsciiArt.marioF);
 
-            Menu.Print();
-            //Create the Score file
-            // \TODO: filePath should be defined
-            FileStream Fs = new FileStream("Scores.txt", FileMode.Create);
-            Fs.Close();
+            
+            
+            
+           
+            Menu.Print(src);
+            
+
+
             while (true) {
                 ConsoleKey k = Console.ReadKey(true).Key;
                 switch (k) {
                     case ConsoleKey.S:
-                        
+
                         ReactionTester tester = new ReactionTester();
                         if (tester.run()) {
                             Console.WriteLine($"\n--- Results ---");
@@ -31,19 +34,38 @@ namespace The_Game {
                             do {
                                 name = Console.ReadLine();
                             } while (String.IsNullOrEmpty(name));
+                            Player test = new Player(name, tester.PlayerOne.Points);
+                            PlayerHandler.Handle(test, src);
+                                                  
 
-                            
-                            // PlayerOne.Points can be written to the file here.
-                            // ...
+
+
                             Console.ReadKey();
                             Console.Clear();
-                            Menu.Print();
+                            Menu.Print(src);
                         }
                         break;
                     case ConsoleKey.H:
-                        Console.WriteLine("Press Enter when you see \"Click\" Appear");
+                        Menu.PrintHelp();
+                        while (true) {
+                           ConsoleKey consoleKey = Console.ReadKey(true).Key;
+                            if (consoleKey == ConsoleKey.Escape) {
+                                Menu.Print(src);
+                                break;
+                            } else if (consoleKey == ConsoleKey.Q) {
+                                Console.Clear();
+                                Console.WriteLine(AsciiArt.marioF);
+                                Thread.Sleep(500);
+                                Menu.Print(src);
+                                return;
+                            }
+                        }
                         break;
                     case ConsoleKey.Q:
+                        Console.Clear();
+                        Console.WriteLine(AsciiArt.marioF);
+                        Thread.Sleep(500);
+                        Menu.Print(src);
                         return;
                     default:
                         Console.WriteLine("Key not defined try again");
