@@ -11,7 +11,8 @@ namespace The_Game
     {
         public ReactionTester ()
         {
-            this.PlayerOne = new Player("Player One", 0);
+            
+            this.PlayerOne = new Player("PlayerOne", 0);
         }
 
         public Player PlayerOne { get; }

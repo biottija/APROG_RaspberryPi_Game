@@ -18,10 +18,12 @@ namespace The_Game {
             Center("APROG Project by:");
             Center("Jannis Biotti and Luca Heger");
             line();
-            Console.Write("~ Press 'h' to get help ");
-            Console.Write("~ Press 's' to start the Game ");
-            Console.Write("~ Press 'q' to quit the Game ");
-            Console.Write("~\n");
+            string keyLegend = "";
+            keyLegend = "~ Press 'h' to get help ";
+            keyLegend += "~ Press 's' to start the Game ";
+            keyLegend += "~ Press 'q' to quit the Game ";
+            keyLegend += "~";
+            Center(keyLegend);
             line();
             
 
