@@ -8,6 +8,86 @@ using System.Threading.Tasks;
 
 namespace The_Game {
     internal class Menu {
+
+        string _scores;
+
+        internal Menu()
+        {
+            _scores = "Scores.txt";
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Menu.Print(_scores);
+        }
+
+        public void run()
+        {
+            while (true)
+            {
+                ConsoleKey k = Console.ReadKey(true).Key;
+                switch (k)
+                {
+                    case ConsoleKey.S:
+
+                        ReactionTester tester = new ReactionTester();
+                        if (tester.run())
+                        {
+                            Console.WriteLine($"\n--- Results ---");
+                            Console.WriteLine($"Time taken to press ENTER: {tester.PlayerOne.Points} ms");
+
+                            string name = "";
+                            Console.WriteLine("Please type your Name and ENTER");
+
+                            do
+                            {
+                                name = Console.ReadLine();
+                            } while (String.IsNullOrEmpty(name));
+                            Player test = new Player(name, tester.PlayerOne.Points);
+                            PlayerHandler.Handle(test, _scores);
+
+
+
+
+                            Console.ReadKey();
+                            Console.Clear();
+                            Menu.Print(_scores);
+                        }
+                        break;
+                    case ConsoleKey.H:
+                        Menu.PrintHelp();
+                        while (true)
+                        {
+                            ConsoleKey consoleKey = Console.ReadKey(true).Key;
+                            if (consoleKey == ConsoleKey.Escape)
+                            {
+                                Menu.Print(_scores);
+                                break;
+                            }
+                            else if (consoleKey == ConsoleKey.Q)
+                            {
+                                Console.Clear();
+                                Console.WriteLine(AsciiArt.marioF);
+                                Thread.Sleep(200);
+                                Menu.Print(_scores);
+                                return;
+                            }
+                        }
+                        break;
+                    case ConsoleKey.Q:
+                        Console.Clear();
+                        Console.WriteLine(AsciiArt.marioF);
+                        Thread.Sleep(200);
+                        Menu.Print(_scores);
+                        return;
+                    default:
+                        Console.WriteLine("Key not defined try again");
+                        break;
+                }
+                Thread.Sleep(100);
+
+            }
+        }
+
         public static void Print(string scores) {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
