@@ -9,10 +9,10 @@ namespace The_Game
 {
     internal class ReactionTester : IGame
     {
-        public ReactionTester ()
+        public ReactionTester (string playerName)
         {
             
-            this.PlayerOne = new Player("PlayerOne", 0);
+            this.PlayerOne = new Player(playerName, 0);
         }
 
         public Player PlayerOne { get; }

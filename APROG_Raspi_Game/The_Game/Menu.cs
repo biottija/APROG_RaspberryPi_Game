@@ -11,8 +11,7 @@ namespace The_Game {
 
         string _scores;
 
-        internal Menu()
-        {
+        internal Menu() {
             _scores = "Scores.txt";
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.UTF8;
@@ -20,51 +19,41 @@ namespace The_Game {
             Menu.Print(_scores);
         }
 
-        public void run()
-        {
-            while (true)
-            {
+        public void run() {
+            while (true) {
                 ConsoleKey k = Console.ReadKey(true).Key;
-                switch (k)
-                {
+                switch (k) {
                     case ConsoleKey.S:
 
-                        ReactionTester tester = new ReactionTester();
-                        if (tester.run())
-                        {
+                        string name = "";
+                        Console.WriteLine("Please type your Name and ENTER");
+
+                        do {
+                            name = Console.ReadLine();
+                        } while (String.IsNullOrEmpty(name));
+
+                        ReactionTester tester = new ReactionTester(name);
+
+                        if (tester.run()) {
                             Console.WriteLine($"\n--- Results ---");
                             Console.WriteLine($"Time taken to press ENTER: {tester.PlayerOne.Points} ms");
 
-                            string name = "";
-                            Console.WriteLine("Please type your Name and ENTER");
+                            PlayerHandler.Handle(tester.PlayerOne, _scores);
 
-                            do
-                            {
-                                name = Console.ReadLine();
-                            } while (String.IsNullOrEmpty(name));
-                            Player test = new Player(name, tester.PlayerOne.Points);
-                            PlayerHandler.Handle(test, _scores);
-
-
-
-
+                            Console.WriteLine("Press any Key to continue");
                             Console.ReadKey();
-                            Console.Clear();
                             Menu.Print(_scores);
                         }
                         break;
                     case ConsoleKey.H:
                         Menu.PrintHelp();
-                        while (true)
-                        {
+                        while (true) {
                             ConsoleKey consoleKey = Console.ReadKey(true).Key;
-                            if (consoleKey == ConsoleKey.Escape)
-                            {
+                            if (consoleKey == ConsoleKey.Escape) {
                                 Menu.Print(_scores);
                                 break;
                             }
-                            else if (consoleKey == ConsoleKey.Q)
-                            {
+                            else if (consoleKey == ConsoleKey.Q) {
                                 Console.Clear();
                                 Console.WriteLine(AsciiArt.marioF);
                                 Thread.Sleep(200);
