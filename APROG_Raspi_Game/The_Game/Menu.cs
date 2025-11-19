@@ -26,7 +26,7 @@ namespace The_Game {
                     case ConsoleKey.S:
 
                         string name = "";
-                        Console.WriteLine("Please type your Name and ENTER");
+                        Menu.Center("Please type your Name and ENTER");
 
                         do {
                             name = Console.ReadLine();
@@ -35,12 +35,12 @@ namespace The_Game {
                         ReactionTester tester = new ReactionTester(name);
 
                         if (tester.run()) {
-                            Console.WriteLine($"\n--- Results ---");
-                            Console.WriteLine($"Time taken to press ENTER: {tester.PlayerOne.Points} ms");
+                            Menu.Center($"\n--- Results ---");
+                            Menu.Center($"Time taken to press ENTER: {tester.PlayerOne.Points} ms");
 
                             PlayerHandler.Handle(tester.PlayerOne, _scores);
 
-                            Console.WriteLine("Press any Key to continue");
+                            Menu.Center("Press any Key to continue");
                             Console.ReadKey();
                             Menu.Print(_scores);
                         }
@@ -105,8 +105,9 @@ namespace The_Game {
             Console.WriteLine(AsciiArt.help);
             line();
             Console.WriteLine();
-            Center("Press Enter when you see \"Click\" Appear");
+            Center("Press Enter when you see Super Mario Appear");
             Console.WriteLine();
+            Console.WriteLine(AsciiArt.mario);
             line();
             string keyLegend = "";
             keyLegend += "~ Press 'esc' to get Back ";
@@ -117,12 +118,12 @@ namespace The_Game {
 
         }
         //this writes a line as wide as the logo with '~'
-        private static void line() {
+        public static void line() {
             Console.Write(new string('~', 108) + "\n");
         }
 
         //this centers a text beneeth the logo
-        private static void Center(string s) {
+        public static void Center(string s) {
             s = s.Trim();
             int n = 54 - (s.Length / 2);
             Console.Write(new string(' ', n));

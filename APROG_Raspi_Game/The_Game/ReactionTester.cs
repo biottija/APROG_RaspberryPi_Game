@@ -29,12 +29,17 @@ namespace The_Game
 
             Stopwatch stopwatch = new Stopwatch();
 
+            Console.Clear();
+            Console.WriteLine(AsciiArt.logo);
+            Menu.line();
+
+
             while (!exit)
             {
                 if (delayCounter >= randomDelay)
                 {
                     stopwatch.Start();
-                    Console.WriteLine("Click");
+                    Console.WriteLine(AsciiArt.mario);
                     Console.Read();
                     stopwatch.Stop();
                     TimeSpan elapsed = stopwatch.Elapsed;
