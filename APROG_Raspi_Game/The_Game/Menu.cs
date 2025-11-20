@@ -20,10 +20,11 @@ namespace The_Game {
         }
 
         public void run() {
+            
             while (true) {
                 ConsoleKey k = Console.ReadKey(true).Key;
                 switch (k) {
-                    case ConsoleKey.S:
+                    case ConsoleKey.S: // When s-key pressed
 
                         string name = "";
                         Menu.Center("Please type your Name and ENTER");
@@ -34,18 +35,18 @@ namespace The_Game {
 
                         ReactionTester tester = new ReactionTester(name);
 
-                        if (tester.run()) {
+                        if (tester.run()) { // Run reaction tester
                             Menu.Center($"\n--- Results ---");
-                            Menu.Center($"Time taken to press ENTER: {tester.PlayerOne.Points} ms");
+                            Menu.Center($"Time taken to press ENTER: {tester.Player.Points} ms");
 
-                            PlayerHandler.Handle(tester.PlayerOne, _scores);
+                            PlayerHandler.Handle(tester.Player, _scores);
 
                             Menu.Center("Press any Key to continue");
                             Console.ReadKey();
                             Menu.Print(_scores);
                         }
                         break;
-                    case ConsoleKey.H:
+                    case ConsoleKey.H: // when h-Key pressed
                         Menu.PrintHelp();
                         while (true) {
                             ConsoleKey consoleKey = Console.ReadKey(true).Key;
@@ -62,7 +63,7 @@ namespace The_Game {
                             }
                         }
                         break;
-                    case ConsoleKey.Q:
+                    case ConsoleKey.Q: // when q-Key pressed
                         Console.Clear();
                         Console.WriteLine(AsciiArt.marioF);
                         Thread.Sleep(200);

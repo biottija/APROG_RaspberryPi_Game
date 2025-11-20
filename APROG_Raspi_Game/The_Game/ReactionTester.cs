@@ -12,10 +12,10 @@ namespace The_Game
         public ReactionTester (string playerName)
         {
             
-            this.PlayerOne = new Player(playerName, 0);
+            this.Player = new Player(playerName, 0);
         }
 
-        public Player PlayerOne { get; }
+        public Player Player { get; }
 
         public bool run()
         {
@@ -43,7 +43,7 @@ namespace The_Game
                     Console.Read();
                     stopwatch.Stop();
                     TimeSpan elapsed = stopwatch.Elapsed;
-                    PlayerOne.Points = (int)elapsed.TotalMilliseconds;
+                    Player.Points = (int)elapsed.TotalMilliseconds;
                     exit = true;
                 }
 
