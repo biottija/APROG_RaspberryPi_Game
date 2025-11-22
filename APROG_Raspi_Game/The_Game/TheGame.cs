@@ -6,17 +6,40 @@ using System.Threading.Tasks;
 
 namespace The_Game
 {
+    public enum GameMode
+    {
+        None,
+        Console,
+        Raspberry
+    }
+
     public class TheGame
     {
+        private GameMode _mode;
         private string _scores;
-        public TheGame() 
+        public TheGame(GameMode mode) 
         {
             _scores = "Scores.txt";
+            _mode = mode;
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.UTF8;
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Menu.Print(_scores);
         }
+
+        public IGame createReactionTester(GameMode mode, string playerName)
+        {
+            switch (mode)
+            {
+                case GameMode.Console:
+                    return new ReactionTesterConsole(playerName);
+                case GameMode.Raspberry:
+                    return new ReactionTesterRaspberry(playerName);
+                default:
+                    return new ReactionTesterConsole(playerName);
+            }
+        }
+
         public void run()
         {
 
@@ -35,7 +58,7 @@ namespace The_Game
                             name = Console.ReadLine();
                         } while (String.IsNullOrEmpty(name));
 
-                        IGame tester = new ReactionTesterConsole(name);
+                        IGame tester = createReactionTester(_mode, name);
 
                         if (tester.run())
                         { // Run reaction tester
