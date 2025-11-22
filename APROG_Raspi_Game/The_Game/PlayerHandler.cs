@@ -27,8 +27,8 @@ namespace The_Game {
             ScoreStreamRead.Close();
             return list;
         }
-        //writes a list od players in a file
-        //!!Overrites existing!!
+        //writes a list of players in a file
+        //!!Overwrites existing file!!
         private static void SavePlayer(string filePath, List<Player> lst) {
             FileStream FsOut = new FileStream(filePath, FileMode.Create);
             StreamWriter ScoreStreamWrite = new StreamWriter(FsOut);
@@ -37,7 +37,7 @@ namespace The_Game {
             }
             ScoreStreamWrite.Close();
         }
-        //Adds player or switches his points
+        //Adds player or changes his points if he already exists
         public static void Handle(Player player, string filePath) {
             var list = new List<Player>();
             list = LoadPlayer(filePath);
