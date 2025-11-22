@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace The_Game {
     public interface IGame {
 
-        protected Player Player { get; }
+        public Player Player { get; }
 
         public abstract bool run();
     }

@@ -33,7 +33,7 @@ namespace The_Game {
                             name = Console.ReadLine();
                         } while (String.IsNullOrEmpty(name));
 
-                        ReactionTester tester = new ReactionTester(name);
+                        IGame tester = new ReactionTesterConsole(name);
 
                         if (tester.run()) { // Run reaction tester
                             Menu.Center($"\n--- Results ---");
