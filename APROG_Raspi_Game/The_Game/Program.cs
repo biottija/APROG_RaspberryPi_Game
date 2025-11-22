@@ -3,7 +3,6 @@
 namespace The_Game {
     internal class Program {
         static void Main(string[] args) {
-            // TODO: filePath should be defined
             GameMode mode = parseArguments(args);
             if (mode == GameMode.None)
             {

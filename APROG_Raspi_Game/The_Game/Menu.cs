@@ -49,12 +49,12 @@ namespace The_Game {
 
         }
 
-        //this writes a line as wide as the logo with '~'
+        // this writes a line as wide as the logo with '~'
         public static void line() {
             Console.Write(new string('~', 108) + "\n");
         }
 
-        //this centers a text beneeth the logo
+        // this centers a text beneeth the logo
         public static void Center(string s) {
             s = s.Trim();
             int n = 54 - (s.Length / 2);
@@ -62,22 +62,22 @@ namespace The_Game {
             Console.Write(s + "\n");
         }
 
-        //print the scoreboard
+        // print the scoreboard
         private static void Scoreboard(string scores) {
             var players = new List<Player>();
-            players = PlayerHandler.LoadPlayer(scores); //load the scorelist
-            players = players.OrderByDescending(p => p.Points).ToList(); //sort the list
-            players.Reverse(); //make the person with the lowes time #1
-            //remove if more than 10 players in list
+            players = PlayerHandler.LoadPlayer(scores); // load the scorelist
+            players = players.OrderByDescending(p => p.Points).ToList(); // sort the list
+            players.Reverse(); // make the person with the lowes time #1
+            // remove if more than 10 players in list
             if (players.Count > 10) {
                 players.RemoveRange(10, players.Count - 10);
             }
-            //print
-            /*Center(new string('*', 40));
+            // print
+            /* Center(new string('*', 40));
             Center('*' + new string(' ', 38) + '*');
             Center('*' + new string(' ', 14) + "Highscores" + new string(' ', 14) + '*');
             Center('*' + new string(' ', 38) + '*');
-            Center(new string('*', 40));*/
+            Center(new string('*', 40)); */
             Console.WriteLine(AsciiArt.highscores);
 
             int rank = 1;
@@ -88,7 +88,7 @@ namespace The_Game {
             Center(new string('*', 40));
         }
 
-        //print one player in the scoreboard
+        // print one player in the scoreboard
         private static void ScrbrdPlayer(int rank, Player p) {
             string line = "*  " + rank + ".  " + p.Name;
             line += new string(' ', (29 - line.Length)) + '*';

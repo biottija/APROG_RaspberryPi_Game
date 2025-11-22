@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace The_Game {
     public class PlayerHandler {
-        //reads the players form the file and returns a list of players
+        // reads the players form the file and returns a list of players
         public static List<Player> LoadPlayer(string filePath) {
             var list = new List<Player>();
             if (!File.Exists(filePath)) {
-                return list; //if the file doesnt exist return empty list
+                return list; // if the file doesnt exist return empty list
             }
             FileStream FsGet = new FileStream(filePath, FileMode.Open);
             StreamReader ScoreStreamRead = new StreamReader(FsGet);
@@ -27,8 +27,8 @@ namespace The_Game {
             ScoreStreamRead.Close();
             return list;
         }
-        //writes a list of players in a file
-        //!!Overwrites existing file!!
+        // writes a list of players in a file
+        // !!Overwrites existing file!!
         private static void SavePlayer(string filePath, List<Player> lst) {
             FileStream FsOut = new FileStream(filePath, FileMode.Create);
             StreamWriter ScoreStreamWrite = new StreamWriter(FsOut);
@@ -37,7 +37,7 @@ namespace The_Game {
             }
             ScoreStreamWrite.Close();
         }
-        //Adds player or changes his points if he already exists
+        // Adds player or changes his points if he already exists
         public static void Handle(Player player, string filePath) {
             var list = new List<Player>();
             list = LoadPlayer(filePath);

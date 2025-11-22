@@ -71,9 +71,7 @@ namespace The_Game
                 case TesterStates.StateReact:
                     if (checkUserInput())
                     {
-                        // Stop Timer
                         stopwatch.Stop();
-                        // change to state finished
                         _state = TesterStates.StateFinished;
                     }
                     break;
