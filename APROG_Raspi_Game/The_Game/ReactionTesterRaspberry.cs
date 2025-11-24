@@ -13,6 +13,7 @@ namespace The_Game
 
         public ReactionTesterRaspberry(string playerName) : base(playerName)
         {
+            Raspberry.Instance.Init(HardwareAccess.Raspberry);
             _raspberry = Raspberry.Instance;
         }
 
@@ -34,7 +35,7 @@ namespace The_Game
             _raspberry.LedYlw.Enabled = true;
         }
 
-        protected override void onInitialization()
+        protected override void onRun()
         {
             _raspberry.LedRed.Enabled = false;
             _raspberry.LedGrn.Enabled = false;

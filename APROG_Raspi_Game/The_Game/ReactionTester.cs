@@ -17,7 +17,6 @@ namespace The_Game
             this.Player = new Player(playerName, 0);
             _raspberry = Raspberry.Instance;
             _state = TesterStates.StateIdle;
-            onInitialization();
         }
 
         public Player Player { get; }
@@ -38,6 +37,7 @@ namespace The_Game
             Console.Clear();
             Console.WriteLine(AsciiArt.logo);
             Menu.line();
+            onRun();
 
 
             while (!exit)
@@ -88,7 +88,7 @@ namespace The_Game
         protected abstract bool checkUserInput();
 
         protected abstract void sendReactSignal();
-        protected virtual void onInitialization() { /* Do Nothing */ }
+        protected virtual void onRun() { /* Do Nothing */ }
 
         private enum TesterStates
         {
