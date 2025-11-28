@@ -86,7 +86,7 @@ namespace The_Game
                             {
                                 Console.Clear();
                                 Console.WriteLine(AsciiArt.marioF);
-                                Thread.Sleep(200);
+                                Thread.Sleep(50);
                                 Menu.Print(_scores);
                                 return;
                             }
@@ -95,7 +95,7 @@ namespace The_Game
                     case ConsoleKey.Q: // when q-Key pressed
                         Console.Clear();
                         Console.WriteLine(AsciiArt.marioF);
-                        Thread.Sleep(200);
+                        Thread.Sleep(50);
                         Menu.Print(_scores);
                         return;
                     default:
