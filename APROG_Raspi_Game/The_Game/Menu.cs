@@ -36,7 +36,9 @@ namespace The_Game {
             Console.WriteLine(AsciiArt.help);
             line();
             Console.WriteLine();
-            Center("Press Enter when you see Super Mario Appear");
+            Center("If you play on the Console: Press Enter when you see Super Mario Appear");
+            Console.WriteLine();
+            Center("If you play on the Raspberry Pi Peripherals: Press the Joystick when the LEDs turn on");
             Console.WriteLine();
             Console.WriteLine(AsciiArt.mario);
             line();
